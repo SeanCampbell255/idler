@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw0dx723kk2ja"]
+
+[ext_resource type="PackedScene" uid="uid://bavev1lro7gqc" path="res://upgrade.tscn" id="1_5pj5l"]
+
+[node name="Upgrade Shop" type="Panel"]
+offset_left = 169.0
+offset_top = 129.0
+offset_right = 950.0
+offset_bottom = 501.0
+
+[node name="Upgrade" parent="." instance=ExtResource("1_5pj5l")]
+anchors_preset = 0
+offset_left = 141.0
+offset_top = -1.0
+offset_right = 456.0
+offset_bottom = 293.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 776.0
+offset_bottom = 59.0
+text = "GETCHUR UPGRADES HERE FELLER"
+horizontal_alignment = 1
+vertical_alignment = 1

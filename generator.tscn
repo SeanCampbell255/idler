@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://bf6r451phg0yb"]
+
+[ext_resource type="Script" path="res://generator.gd" id="1_b1upr"]
+[ext_resource type="Texture2D" uid="uid://j14cqidry2l" path="res://icon.svg" id="2_uj535"]
+
+[node name="Generator" type="Node2D"]
+script = ExtResource("1_b1upr")
+
+[node name="Ignition" type="Button" parent="."]
+offset_left = 479.0
+offset_top = 450.0
+offset_right = 708.0
+offset_bottom = 510.0
+text = "Yank the Generator's Starter"
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(587, 337)
+texture = ExtResource("2_uj535")
+
+[node name="Readout" type="RichTextLabel" parent="."]
+offset_left = 383.0
+offset_top = 153.0
+offset_right = 830.0
+offset_bottom = 246.0
+bbcode_enabled = true
+text = "Goops Gained: X"
+
+[node name="Goop Timer" type="Timer" parent="."]
+
+[node name="Generator Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="Goop Rate" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Upgrades" type="Button" parent="."]
+offset_left = 975.0
+offset_top = 219.0
+offset_right = 1119.0
+offset_bottom = 314.0
+text = "UPGRADES"
+
+[connection signal="pressed" from="Ignition" to="." method="_on_ignition_pressed"]
+[connection signal="timeout" from="Goop Timer" to="." method="_on_goop_timer_timeout"]
+[connection signal="timeout" from="Generator Timer" to="." method="_on_generator_timer_timeout"]
