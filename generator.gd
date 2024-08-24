@@ -11,6 +11,7 @@ extends Node2D
 var generatorMessages: Array[String]
 var goops = 0
 var goopRate = 1 # goops per second
+var goopRateReadout = 1
 
 # Initializing messages for generator start
 func _ready() -> void:
@@ -25,8 +26,8 @@ func restart_generator() -> void:
 		goopTimer.start()
 		generatorTimer.start()
 		
-		goopRate = 1
-		goopRateLabel.text = str(goopRate) + "/sec"
+		goopRateReadout = goopRate
+		goopRateLabel.text = str(goopRateReadout) + "/sec"
 		ignition.disabled = true
 	else:
 		readout.text = generatorMessages.pop_front()
@@ -49,8 +50,8 @@ func _on_generator_timer_timeout() -> void:
 	generatorMessages.push_back("[b]INSANE ONOMONOPIA[/b] Okay I'm gooping now :sunglasses:")
 	
 	# Sets things when "out of fuel", this could be handled with state?
-	goopRate = 0
-	goopRateLabel.text = str(goopRate) + "/sec"
+	goopRateReadout = 0
+	goopRateLabel.text = str(goopRateReadout) + "/sec"
 	goopTimer.stop()
 	restart_generator()
 	ignition.disabled = false
