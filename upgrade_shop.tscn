@@ -1,26 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://dw0dx723kk2ja"]
+[gd_scene load_steps=4 format=3 uid="uid://dwe2uk383pqgj"]
 
 [ext_resource type="PackedScene" uid="uid://bavev1lro7gqc" path="res://upgrade.tscn" id="1_5pj5l"]
 [ext_resource type="Script" path="res://upgrade_shop.gd" id="1_l3h85"]
 
-[node name="Upgrade Shop" type="Panel"]
-offset_left = 169.0
-offset_top = 129.0
-offset_right = 950.0
-offset_bottom = 501.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pxeku"]
+bg_color = Color(0.32549, 0.0352941, 0.533333, 1)
+
+[node name="Upgrade Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_l3h85")
 
-[node name="Shop Title" type="Label" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_right = 776.0
-offset_bottom = 59.0
-text = "GETCHUR UPGRADES HERE FELLER"
+offset_left = 72.0
+offset_top = 81.0
+offset_right = 1101.0
+offset_bottom = 568.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pxeku")
+
+[node name="Goop Rate" parent="Panel" instance=ExtResource("1_5pj5l")]
+offset_left = 144.0
+offset_top = 10.0
+offset_right = 459.0
+offset_bottom = 304.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 1023.0
+offset_bottom = 54.0
+text = "Upgrade Shop"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Goop Rate" parent="." instance=ExtResource("1_5pj5l")]
-anchors_preset = 0
-offset_left = 141.0
-offset_top = -1.0
-offset_right = 456.0
-offset_bottom = 293.0
+[node name="Close" type="Button" parent="Panel"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="Panel/Close" to="." method="_on_close_pressed"]

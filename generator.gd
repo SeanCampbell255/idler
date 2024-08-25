@@ -7,6 +7,7 @@ extends Node2D
 @onready var generatorTimer = $"Generator Timer"
 @onready var goopRateLabel = $"Goop Rate"
 @onready var upgradeButton = $"Upgrades"
+@onready var upgradeShop = $"Upgrade Shop"
 
 var generatorMessages: Array[String]
 var goops = 0
@@ -16,6 +17,7 @@ var goopRateReadout = 1
 # Initializing messages for generator start
 func _ready() -> void:
 	goopRateLabel.text = ""
+	upgradeShop.visible = false
 	
 	_on_generator_timer_timeout()
 
@@ -59,3 +61,7 @@ func _on_generator_timer_timeout() -> void:
 
 func _on_ignition_pressed() -> void:
 	restart_generator()
+
+
+func _on_upgrades_pressed() -> void:
+	upgradeShop.visible = true

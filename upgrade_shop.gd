@@ -1,14 +1,24 @@
-extends Panel
+extends Control
 
-@onready var goopRate = $"Goop Rate"
+@onready var goopRate = $"Panel/Goop Rate"
+
+var goopRateCost = 20
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	var goopRateChildren = goopRate.get_children()
+	goopRateChildren[0].text = "Goop Rate"
+	goopRateChildren[1].text = str(goopRateCost) + "Goops"
+	goopRateChildren[1].disabled = true
+	
 
-func purchase_upgrade() -> void:
-	pass # Tell generator to do better
 
-func update_price() -> void:
-	pass # Increases price of purchased upgrade
+func _on_close_pressed() -> void:
+	visible = false
+
+
+func _on_visibility_changed() -> void:
+	if visible == true && get_parent().goops >= goopRateCost:
+		goopRate.get_children()[1].disabled = false
+		

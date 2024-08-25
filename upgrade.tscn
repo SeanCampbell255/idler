@@ -2,6 +2,7 @@
 
 [node name="Upgrade" type="Control"]
 layout_mode = 3
+anchors_preset = 0
 offset_left = 446.0
 offset_top = 177.0
 offset_right = 761.0

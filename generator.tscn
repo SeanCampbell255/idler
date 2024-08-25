@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bf6r451phg0yb"]
+[gd_scene load_steps=4 format=3 uid="uid://bf6r451phg0yb"]
 
 [ext_resource type="Script" path="res://generator.gd" id="1_b1upr"]
 [ext_resource type="Texture2D" uid="uid://j14cqidry2l" path="res://icon.svg" id="2_uj535"]
+[ext_resource type="PackedScene" uid="uid://dwe2uk383pqgj" path="res://upgrade_shop.tscn" id="3_tqo7i"]
 
 [node name="Generator" type="Node2D"]
 script = ExtResource("1_b1upr")
@@ -41,6 +42,9 @@ offset_right = 1119.0
 offset_bottom = 314.0
 text = "UPGRADES"
 
+[node name="Upgrade Shop" parent="." instance=ExtResource("3_tqo7i")]
+
 [connection signal="pressed" from="Ignition" to="." method="_on_ignition_pressed"]
 [connection signal="timeout" from="Goop Timer" to="." method="_on_goop_timer_timeout"]
 [connection signal="timeout" from="Generator Timer" to="." method="_on_generator_timer_timeout"]
+[connection signal="pressed" from="Upgrades" to="." method="_on_upgrades_pressed"]
